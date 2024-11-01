@@ -351,7 +351,7 @@ const u8 *_hid_tud_descriptor_configuration_cb(void) {
 
 #		undef APPEND_DESC
 
-  		// Config number, interface count, string index, total length, attribute, power in mA
+		// Config number, interface count, string index, total length, attribute, power in mA
 		const u8 part[] = {TUD_CONFIG_DESCRIPTOR(1, iface, 0, offset, TUSB_DESC_CONFIG_ATT_REMOTE_WAKEUP, 100)};
 		memcpy(desc, part, TUD_CONFIG_DESC_LEN);
 		filled = true;
@@ -381,8 +381,8 @@ const u8 *tud_descriptor_device_cb(void) {
 
 		.bMaxPacketSize0	= CFG_TUD_ENDPOINT0_SIZE,
 
-		.idVendor			= 0x1209, // https://pid.codes/org/Pi-KVM
-		.idProduct			= 0xEDA2,
+		.idVendor			= 0x046d, // https://pid.codes/org/Pi-KVM
+		.idProduct			= 0xc52b,
 		.bcdDevice			= 0x0100,
 
 		.iManufacturer		= 1,
@@ -413,12 +413,12 @@ const u16 *tud_descriptor_string_cb(u8 index, u16 lang_id) {
 	} else {
 		char str[32];
 		switch (index) {
-			case 1: strcpy(str, "PiKVM"); break; // Manufacturer
-			case 2: strcpy(str, (ph_g_is_bridge ? "PiKVM HID Bridge" : "PiKVM HID")); break; // Product
+			case 1: strcpy(str, "Logitech"); break; // Manufacturer
+			case 2: strcpy(str, (ph_g_is_bridge ? "Logitech" : "USB Receiver")); break; // Product
 			case 3: pico_get_unique_board_id_string(str, 32); break; // Serial
 			case 4: {
 					if (ph_g_is_bridge) {
-						strcpy(str, "PiKVM HID Bridge CDC");
+						strcpy(str, "Logitech");
 					} else {
 						return NULL;
 					}
