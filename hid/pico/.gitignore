@@ -2,4 +2,4 @@
 /.tinyusb*
 /.ps2x2pico*
 /.build/
-/*.uf2
+#/*.uf2
